@@ -199,3 +199,205 @@ musicToggle.addEventListener('click', () => {
         isPlaying = true;
     }
 });
+
+// --- NEW FEATURE LOGIC --- //
+
+// 1. Welcome Overlay Logic
+document.body.style.overflow = 'hidden'; // Lock scroll completely on load
+const welcomeOverlay = document.getElementById('welcome-overlay');
+const text1 = document.getElementById('welcome-text-1');
+const text2 = document.getElementById('welcome-text-2');
+const enterBtn = document.getElementById('enter-btn');
+
+setTimeout(() => { text1.style.opacity = '1'; }, 500);
+setTimeout(() => { 
+    text2.classList.remove('hidden'); 
+    setTimeout(() => { text2.style.opacity = '1'; }, 50);
+}, 2500);
+setTimeout(() => { 
+    enterBtn.classList.remove('hidden'); 
+}, 4500);
+
+enterBtn.addEventListener('click', () => {
+    welcomeOverlay.classList.add('fade-out');
+    document.body.style.overflow = 'auto'; // Unlock scroll
+    // Start music automatically here
+    if (player && typeof player.playVideo === 'function' && !isPlaying) {
+        player.playVideo();
+        isPlaying = true;
+        document.getElementById('music-icon').innerText = '⏸️';
+    }
+});
+
+// 2. Typewriter Effect
+const typewriterText = document.getElementById('typewriter-text');
+const fullText = "I don’t know how to explain this perfectly...\nbut having you in my life makes everything feel better.\nYou are not just my best friend...\nyou are my comfort, my happiness, my favorite person. 💜";
+let typeIndex = 0;
+let hasTyped = false;
+
+const typewriteObserver = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting && !hasTyped) {
+        hasTyped = true;
+        typeText();
+    }
+}, { threshold: 0.5 });
+
+const typeSec = document.getElementById('typewriter-section');
+if(typeSec) typewriteObserver.observe(typeSec);
+
+function typeText() {
+    if (typeIndex < fullText.length) {
+        if(fullText.charAt(typeIndex) === '\n') {
+            typewriterText.innerHTML += '<br>';
+        } else {
+            typewriterText.innerHTML += fullText.charAt(typeIndex);
+        }
+        typeIndex++;
+        setTimeout(typeText, 60); // Speed
+    }
+}
+
+// 4. Why You Are Special Logic
+const specialBtn = document.getElementById('special-btn');
+const specialContainer = document.getElementById('special-message-container');
+const specialMessage = document.getElementById('special-message');
+
+const specialLines = [
+    "Because your smile changes everything.",
+    "Because you make people feel safe.",
+    "Because you are genuinely kind.",
+    "Because you are unforgettable.",
+    "Because you are one of a kind.",
+    "Because your laugh is my favorite sound.",
+    "Because you always know how to make me smile.",
+    "Because you see the good in everyone.",
+    "Because you light up every room you walk into.",
+    "Because you are effortlessly beautiful inside and out.",
+    "Because your energy is pure magic.",
+    "Because you inspire me to be better.",
+    "Because you naturally bring warmth to cold days.",
+    "Because there is nobody else quite like you.",
+    "Because you are simply Rajeshwari. 💜"
+];
+let availableLines = [...specialLines];
+
+if(specialBtn) {
+    specialBtn.addEventListener('click', () => {
+        specialContainer.classList.remove('hidden');
+        specialMessage.style.opacity = '0';
+        
+        setTimeout(() => {
+            if(availableLines.length === 0) availableLines = [...specialLines];
+            const randIndex = Math.floor(Math.random() * availableLines.length);
+            specialMessage.innerText = availableLines[randIndex];
+            availableLines.splice(randIndex, 1);
+            specialMessage.style.opacity = '1';
+        }, 300);
+    });
+}
+
+// 5. Cake Interaction
+const cakeInteraction = document.getElementById('cake-interaction');
+const cakeWish = document.getElementById('cake-wish');
+let cakeOpened = false;
+
+if(cakeInteraction) {
+    cakeInteraction.addEventListener('click', () => {
+        if (cakeOpened) return;
+        cakeOpened = true;
+        
+        cakeInteraction.classList.add('opened');
+        
+        // Confetti burst for Cake
+        confetti({ particleCount: 150, spread: 100, origin: { y: 0.6 }, colors: ['#b366ff', '#ff66b3', '#ffffff'] });
+        
+        setTimeout(() => {
+            cakeWish.classList.remove('hidden');
+        }, 1000);
+    });
+}
+
+// 8. Gallery Modal Enhancements
+const galleryModal = document.getElementById('gallery-modal');
+const modalImage = document.getElementById('modal-image');
+const modalCaption = document.getElementById('modal-caption');
+const closeModalBtn = document.getElementById('close-modal');
+const closeModalBackdrop = document.getElementById('close-modal-backdrop');
+
+document.querySelectorAll('.gallery-card').forEach(card => {
+    card.addEventListener('click', () => {
+        const imgSrc = card.querySelector('img').src;
+        const captionText = card.querySelector('.gallery-quote').innerText;
+        
+        modalImage.src = imgSrc;
+        modalCaption.innerText = captionText;
+        
+        galleryModal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    });
+});
+
+function closeGallery() {
+    galleryModal.classList.add('hidden');
+    document.body.style.overflow = 'auto';
+}
+
+if(closeModalBtn) closeModalBtn.addEventListener('click', closeGallery);
+if(closeModalBackdrop) closeModalBackdrop.addEventListener('click', closeGallery);
+
+
+// 7 & 10. Micro-interactions & Secret Message (5-Taps)
+let tapCount = 0;
+let tapTimer;
+const secretModal = document.getElementById('secret-modal');
+const closeSecretBtn = document.getElementById('close-secret');
+
+window.addEventListener('click', (e) => {
+    // Standard Touch Particle Generator
+    const particle = document.createElement('div');
+    particle.className = 'touch-particle';
+    particle.style.left = (e.clientX - 7.5) + 'px';
+    particle.style.top = (e.clientY - 7.5) + 'px';
+    document.body.appendChild(particle);
+    setTimeout(() => particle.remove(), 1000);
+    
+    // Ripple Effect Check
+    if (e.target.classList.contains('ripple-btn')) {
+        const ripple = document.createElement('span');
+        ripple.classList.add('ripple');
+        const rect = e.target.getBoundingClientRect();
+        ripple.style.left = (e.clientX - rect.left) + 'px';
+        ripple.style.top = (e.clientY - rect.top) + 'px';
+        e.target.appendChild(ripple);
+        setTimeout(() => ripple.remove(), 600);
+    }
+    
+    // Mobile Vibration
+    if (navigator.vibrate) {
+        navigator.vibrate(30);
+    }
+
+    // Secret Tap Trigger Tracker
+    tapCount++;
+    if (tapCount === 1) {
+        tapTimer = setTimeout(() => { tapCount = 0; }, 2000);
+    }
+    
+    if (tapCount >= 5 && secretModal) {
+        secretModal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+        tapCount = 0;
+        clearTimeout(tapTimer);
+        
+        // Bonus confetti on secret find
+        confetti({ particleCount: 300, spread: 180, origin: { y: 0.5 }, startVelocity: 40 });
+    }
+});
+
+if(closeSecretBtn) {
+    closeSecretBtn.addEventListener('click', () => {
+        secretModal.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+    });
+}
+

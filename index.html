@@ -15,6 +15,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
 <body>
+    <!-- Welcome Overlay -->
+    <div id="welcome-overlay" class="welcome-overlay center-flex">
+        <div class="overlay-content center-flex">
+            <h2 id="welcome-text-1" class="welcome-text glowing-text" style="opacity: 0;">Hey Rajeshwari… 💜</h2>
+            <h2 id="welcome-text-2" class="welcome-text glowing-text hidden" style="margin-top: 1rem; opacity: 0; font-size: clamp(1.5rem, 5vw, 2.5rem);">This is something made just for you…</h2>
+            <button id="enter-btn" class="glass-btn hidden" style="margin-top: 3rem;">Tap to Continue</button>
+        </div>
+    </div>
     <!-- Background Canvas -->
     <canvas id="bg-canvas"></canvas>
 
@@ -23,9 +31,12 @@
     <div class="bg-element bottom-right"></div>
 
     <!-- Music Toggle -->
-    <button id="music-toggle" class="floating-btn glass">
-        <span id="music-icon">🎵</span>
-    </button>
+    <div class="music-control-wrapper">
+        <div class="music-label" style="font-size: 0.8rem; font-weight: 600; text-shadow: 0 0 10px #ff66b3; letter-spacing: 1px;">Now Playing for You 💜</div>
+        <button id="music-toggle" class="floating-btn glass">
+            <span id="music-icon" style="filter: none;">🎵</span>
+        </button>
+    </div>
     <div id="youtube-player" style="display: none;"></div>
 
     <main>
@@ -117,6 +128,66 @@
             </div>
         </section>
 
+        <!-- Typewriter Section -->
+        <section id="typewriter-section" class="typewriter-section center-flex reveal-on-scroll" style="padding: 4rem 2rem;">
+            <div class="typewriter-container glass" style="padding: 3rem; text-align: center;">
+                <p id="typewriter-text" class="emotional-message typewriter-p" style="margin: 0; font-size: clamp(1.2rem, 3.5vw, 1.8rem);"></p>
+                <span class="cursor glowing-text" style="font-size: 2rem;">|</span>
+            </div>
+        </section>
+
+        <!-- Memory Timeline -->
+        <section id="timeline-section" class="timeline-section" style="padding: 4rem 2rem;">
+            <h2 class="section-title glowing-text reveal-on-scroll">Our Timeline</h2>
+            <div class="timeline">
+                <div class="timeline-item glass reveal-on-scroll">
+                    <div class="timeline-dot"></div>
+                    <h3 class="timeline-year glowing-text" style="font-size: 2rem; margin-bottom: 0.5rem;">2023</h3>
+                    <p class="emotional-message" style="margin: 0; font-size: 1.1rem;">The Beginning</p>
+                </div>
+                <div class="timeline-item glass reveal-on-scroll">
+                    <div class="timeline-dot"></div>
+                    <h3 class="timeline-year glowing-text" style="font-size: 2rem; margin-bottom: 0.5rem;">2024</h3>
+                    <p class="emotional-message" style="margin: 0; font-size: 1.1rem;">Beautiful Moments</p>
+                </div>
+                <div class="timeline-item glass reveal-on-scroll">
+                    <div class="timeline-dot"></div>
+                    <h3 class="timeline-year glowing-text" style="font-size: 2rem; margin-bottom: 0.5rem;">2025</h3>
+                    <p class="emotional-message" style="margin: 0; font-size: 1.1rem;">Strong Bond</p>
+                </div>
+                <div class="timeline-item glass reveal-on-scroll">
+                    <div class="timeline-dot"></div>
+                    <h3 class="timeline-year glowing-text" style="font-size: 2rem; margin-bottom: 0.5rem;">2026</h3>
+                    <p class="emotional-message" style="margin: 0; font-size: 1.1rem;">Still My Favorite 💜</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why You Are Special -->
+        <section id="special-button-section" class="special-section center-flex reveal-on-scroll" style="padding: 4rem 2rem;">
+            <button id="special-btn" class="glass-btn glow-pulse ripple-btn" style="padding: 1rem 2rem; font-size: 1.2rem; cursor: pointer;">👉 Tap to Know Why You Are Special</button>
+            <div id="special-message-container" class="glass hidden" style="margin-top: 2rem; padding: 2rem; width: 90%; max-width: 600px; text-align: center;">
+                <p id="special-message" class="emotional-message" style="margin: 0; font-size: 1.3rem; transition: opacity 0.5s ease;"></p>
+            </div>
+        </section>
+
+        <!-- Cake Section -->
+        <section id="cake-section" class="cake-section center-flex reveal-on-scroll" style="padding: 6rem 2rem;">
+            <h2 class="section-title glowing-text" style="font-size: 2.5rem; margin-bottom: 3rem;">Tap the Cake 🎂</h2>
+            <div class="cake-wrapper center-flex" style="position: relative;">
+                <div class="cake" id="cake-interaction">
+                    <div class="cake-half cake-left"></div>
+                    <div class="cake-half cake-right"></div>
+                    <div class="candle">
+                        <div class="flame"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="cake-wish" class="glass hidden" style="margin-top: 4rem; padding: 2rem; text-align: center; max-width: 600px;">
+                <p class="emotional-message" style="margin: 0; font-size: 1.5rem;">"Make a wish… because you deserve everything beautiful."</p>
+            </div>
+        </section>
+
         <!-- Final Message Section -->
         <footer class="final-section center-flex reveal-on-scroll">
             <div class="glass final-message-card">
@@ -127,6 +198,38 @@
             </div>
         </footer>
     </main>
+
+    <!-- Ultimate Ending Section -->
+    <section id="ultimate-end" class="ultimate-end center-flex reveal-on-scroll" style="padding: 6rem 2rem; padding-bottom: 10rem;">
+        <div class="glass final-glow-card center-flex" style="text-align: center; padding: 4rem 2rem;">
+            <p class="emotional-message" style="font-size: clamp(1.4rem, 4vw, 2.2rem); margin-bottom: 3rem; line-height: 1.8;">
+                “No matter what happens…<br>I’ll always be there for you.<br>Happy Birthday, Rajeshwari 💜”
+            </p>
+            <div class="pulsing-heart" style="font-size: 5rem; filter: drop-shadow(0 0 30px #ff66b3); animation: heartbeat 1.5s infinite;">💜</div>
+        </div>
+    </section>
+
+    <!-- Gallery Action Modal -->
+    <div id="gallery-modal" class="fullscreen-modal hidden">
+        <div class="modal-backdrop" id="close-modal-backdrop"></div>
+        <div class="modal-content glass center-flex" style="max-width: 90vw; max-height: 90vh; padding: 1.5rem; position: relative; z-index: 1010; overflow-y: auto;">
+            <img id="modal-image" src="" alt="Memory" style="max-width: 100%; max-height: 60vh; border-radius: 12px; margin-bottom: 1.5rem; object-fit: contain;">
+            <p id="modal-caption" class="gallery-quote" style="color: white; font-size: 1.2rem; text-shadow: 0 0 10px rgba(255,102,179,0.8); margin-bottom: 1.5rem;"></p>
+            <button id="close-modal" class="glass-btn glow-pulse" style="padding: 0.8rem 2rem; font-size: 1rem; cursor: pointer;">Close Story</button>
+        </div>
+    </div>
+
+    <!-- Secret Popup Modal -->
+    <div id="secret-modal" class="fullscreen-modal hidden">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content glass center-flex" style="max-width: 500px; padding: 3rem; position: relative; z-index: 1010; text-align: center;">
+            <h2 class="glowing-text" style="font-size: 2rem;">A Secret Message</h2>
+            <p class="emotional-message" style="margin-top: 1rem; font-size: 1.2rem; line-height: 1.6;">
+                “You are more important to me than I ever say.<br>I’m really lucky to have you.”
+            </p>
+            <button id="close-secret" class="glass-btn glow-pulse" style="margin-top: 2rem; padding: 0.8rem 2rem; font-size: 1rem; cursor: pointer;">Close</button>
+        </div>
+    </div>
 
     <!-- YouTube IFrame API -->
     <script src="https://www.youtube.com/iframe_api"></script>
