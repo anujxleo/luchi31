@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Rajeshwari 💜</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Confetti Library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <!-- GSAP for smooth animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <!-- Background Canvas -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- BTS Aesthetic Background Elements -->
+    <div class="bg-element top-left"></div>
+    <div class="bg-element bottom-right"></div>
+
+    <!-- Music Toggle -->
+    <button id="music-toggle" class="floating-btn glass">
+        <span id="music-icon">🎵</span>
+    </button>
+    <div id="youtube-player" style="display: none;"></div>
+
+    <main>
+        <!-- Hero Section -->
+        <header class="hero-section center-flex">
+            <h1 class="glowing-text">Happy Birthday<br><span>Rajeshwari 💜</span></h1>
+            <p class="subtext">Today is all about celebrating the most beautiful soul I know.</p>
+            <div class="hero-image-wrapper">
+                <img src="https://res.cloudinary.com/dy40kl4z7/image/upload/v1774925988/lv_7595463032151706885_20260330225727_1_lq2fvo.jpg" alt="Rajeshwari" class="hero-image glass-border">
+            </div>
+        </header>
+
+        <!-- Gift Section -->
+        <section id="gift-section" class="center-flex">
+            <!-- Gift Container -->
+            <div class="gift-container" id="gift-container">
+                <div class="click-hint">Tap to Open</div>
+                <div class="gift-box" id="gift-box">
+                    <div class="gift-lid"></div>
+                    <div class="gift-body">
+                        <div class="gift-ribbon-vertical"></div>
+                        <div class="gift-ribbon-horizontal"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hidden Message (Revealed on Open) -->
+            <div id="gift-reveal" class="glass hidden reveal-content">
+                <img src="https://res.cloudinary.com/dy40kl4z7/image/upload/v1774925901/IMG-20260330-WA0095_er0iv3.jpg" alt="Special Memory" class="reveal-image glass-border">
+                <p class="emotional-message">
+                    “Rajeshwari, you are not just my best friend, you are one of the most special parts of my life. Your smile has a magic that can brighten even the darkest days. I feel lucky every single day to have you. On your birthday, I just want you to know that you are deeply appreciated, endlessly admired, and truly loved. Stay the way you are — kind, beautiful, and unforgettable. 💜”
+                </p>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="gallery-section">
+            <h2 class="section-title glowing-text">Precious Moments</h2>
+            <div class="gallery-grid">
+                <!-- Card 1 -->
+                <div class="gallery-card glass reveal-on-scroll">
+                    <div class="img-wrapper">
+                        <img src="https://res.cloudinary.com/dy40kl4z7/image/upload/v1774925910/0330_1_cnqqx3.jpg" alt="Moment 1">
+                    </div>
+                    <p class="gallery-quote">“She doesn’t just look beautiful, she carries a light that makes everything around her feel softer and warmer.”</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="gallery-card glass reveal-on-scroll">
+                    <div class="img-wrapper">
+                        <img src="https://res.cloudinary.com/dy40kl4z7/image/upload/v1774925905/IMG-20260330-WA0088_fxnke8.jpg" alt="Moment 2">
+                    </div>
+                    <p class="gallery-quote">“There is something rare about her — the kind of beauty that isn’t just seen, but felt.”</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="gallery-card glass reveal-on-scroll">
+                    <div class="img-wrapper">
+                        <img src="https://res.cloudinary.com/dy40kl4z7/image/upload/v1774925905/IMG-20260330-WA0087_dqkomf.jpg" alt="Moment 3">
+                    </div>
+                    <p class="gallery-quote">“Her smile isn’t just a smile, it’s a whole feeling that lights up the world.”</p>
+                </div>
+                <!-- Card 4 -->
+                <div class="gallery-card glass reveal-on-scroll">
+                    <div class="img-wrapper">
+                        <img src="https://res.cloudinary.com/dy40kl4z7/image/upload/v1774925903/IMG-20260330-WA0099_jmiau6.jpg" alt="Moment 4">
+                    </div>
+                    <p class="gallery-quote">“She is the kind of person who makes ordinary moments utterly unforgettable.”</p>
+                </div>
+                <!-- Card 5 -->
+                <div class="gallery-card glass reveal-on-scroll">
+                    <div class="img-wrapper">
+                        <img src="https://res.cloudinary.com/dy40kl4z7/image/upload/v1774925906/IMG-20260330-WA0092_nayhsl.jpg" alt="Moment 5">
+                    </div>
+                    <p class="gallery-quote">“Not everyone shines the same way, but she glows effortlessly, like starlight in the dark.”</p>
+                </div>
+                <!-- Card 6 -->
+                <div class="gallery-card glass reveal-on-scroll">
+                    <div class="img-wrapper">
+                        <img src="https://res.cloudinary.com/dy40kl4z7/image/upload/v1774925899/IMG-20260330-WA0094_zfq0lg.jpg" alt="Moment 6">
+                    </div>
+                    <p class="gallery-quote">“A presence so gentle, yet so powerful. She holds a universe in her eyes.”</p>
+                </div>
+                <!-- Card 7 -->
+                <div class="gallery-card glass reveal-on-scroll">
+                    <div class="img-wrapper">
+                        <img src="https://res.cloudinary.com/dy40kl4z7/image/upload/v1774925904/IMG-20260330-WA0096_tve1hf.jpg" alt="Moment 7">
+                    </div>
+                    <p class="gallery-quote">“Grace in her steps, kindness in her heart — she is poetry in motion.”</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final Message Section -->
+        <footer class="final-section center-flex reveal-on-scroll">
+            <div class="glass final-message-card">
+                <h2 class="glowing-text">To My Favorite Person 💜</h2>
+                <p>
+                    “Rajeshwari, thank you for being in my life. These 3 years of friendship mean more to me than words can ever explain. You are not just special — you are irreplaceable. I hope your life is filled with happiness, success, and everything your heart desires. Keep smiling, because your smile is one of the most beautiful things in this world. Happy Birthday once again. 💜”
+                </p>
+            </div>
+        </footer>
+    </main>
+
+    <!-- YouTube IFrame API -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
