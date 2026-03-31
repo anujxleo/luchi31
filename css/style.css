@@ -74,6 +74,7 @@ body {
     font-family: 'Playfair Display', serif;
     font-weight: 600;
     background: linear-gradient(to right, #e6ccff, #ff99cc);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: 0 0 30px rgba(255, 102, 179, 0.3);
@@ -84,6 +85,7 @@ body {
 .glowing-text span {
     font-size: clamp(3rem, 10vw, 5rem);
     background: linear-gradient(to right, #b366ff, #ff66b3);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -325,6 +327,7 @@ body {
     color: var(--text-main);
     text-shadow: 0 2px 4px rgba(0,0,0,0.5);
     background: linear-gradient(to right, #ffffff, #ffb3e6);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -450,6 +453,22 @@ body {
 @media (max-width: 768px) {
     .gift-box { width: 120px; height: 120px; }
     .gift-lid { width: 130px; left: -5px; }
-    .reveal-content { padding: 1.5rem; }
+    
+    /* Increased section widths for mobile */
+    .reveal-content { padding: 1.5rem; width: 95%; max-width: 95%; }
+    .final-message-card { width: 95%; max-width: 95%; padding: 1.5rem; }
+    .final-section { padding: 4rem 1rem; }
+    
     .gallery-grid { gap: 2rem; }
+    
+    /* Make hero image landscape/original form instead of circle */
+    .hero-image-wrapper { 
+        width: 90vw; 
+        aspect-ratio: 4/3; 
+        border-radius: 16px; 
+    }
+    .hero-image { 
+        border-radius: 16px; 
+        object-fit: contain;
+    }
 }
