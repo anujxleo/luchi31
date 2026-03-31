@@ -464,7 +464,7 @@ body {
     /* Make hero image landscape/original form instead of circle */
     .hero-image-wrapper { 
         width: 90vw; 
-        aspect-ratio: 4/3; 
+        aspect-ratio: 16/9; 
         border-radius: 16px; 
     }
     .hero-image { 

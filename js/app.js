@@ -90,6 +90,13 @@ giftContainer.addEventListener('click', () => {
     giftBox.classList.add('open');
     document.querySelector('.click-hint').style.display = 'none';
 
+    // Start playing music immediately to prevent browser autoplay block
+    if (player && typeof player.playVideo === 'function') {
+        player.playVideo();
+        isPlaying = true;
+        document.getElementById('music-icon').innerText = '⏸️';
+    }
+
     // Trigger Confetti
     const duration = 3000;
     const end = Date.now() + duration;
@@ -123,13 +130,6 @@ giftContainer.addEventListener('click', () => {
         
         // Ensure scroll jumps to the revealed message nicely
         giftReveal.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        
-        // Start playing music
-        if (player && typeof player.playVideo === 'function') {
-            player.playVideo();
-            isPlaying = true;
-            document.getElementById('music-icon').innerText = '⏸️';
-        }
     }, 1200);
 });
 
